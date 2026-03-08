@@ -1,0 +1,79 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+    int total, x, y, z;
+    scanf("%d %d %d %d", &total, &x, &y, &z);
+
+    int A = 0, B = 0, C = 0, resto = 0;
+    int deu_certo = 0;
+    int investiu = 0;
+
+    if ((total * x) % 100 == 0 && (total * y) % 100 == 0 && (total * z) % 100 == 0) {
+        A = (total * x) / 100;
+        B = (total * y) / 100;
+        C = (total * z) / 100;
+        resto = total - A - B - C;
+        deu_certo = 1;
+        investiu = 0;
+    }
+
+    if (deu_certo == 0) {
+        int i;
+        for (i = 1; i <= 3; i++) {
+            int novo = total + i;
+            if (deu_certo == 0 && (novo * x) % 100 == 0 && (novo * y) % 100 == 0 && (novo * z) % 100 == 0) {
+                int tA = (novo * x) / 100;
+                int tB = (novo * y) / 100;
+                int tC = (novo * z) / 100;
+                int tResto = novo - tA - tB - tC;
+                if (tResto >= i + 1) {
+                    A = tA;
+                    B = tB;
+                    C = tC;
+                    resto = tResto;
+                    deu_certo = 1;
+                    investiu = i;
+                }
+            }
+        }
+    }
+
+    int dinheiro = 3;
+
+    if (deu_certo == 1) {
+        printf("Cada homem ficou com %d, %d e %d reais, respectivamente\n", A, B, C);
+        dinheiro = dinheiro - investiu + resto;
+    } else {
+        printf("Nao foi dessa vez que Rebeka pode ajudar...\n");
+    }
+
+    if (investiu == 2) {
+        char c1, c2, c3;
+        scanf(" %c %c %c", &c1, &c2, &c3);
+        int soma = (c1 - 'a' + 1) + (c2 - 'a' + 1) + (c3 - 'a' + 1);
+        printf("%d\n", soma);
+    }
+
+    if (investiu == 3) {
+        int id1, id2, id3;
+        scanf("%d %d %d", &id1, &id2, &id3);
+        if (id1 % 3 == 0 || id2 % 3 == 0 || id3 % 3 == 0) {
+            int parcelas = 0;
+            if (id1 % 3 == 0) parcelas = parcelas + id1 / 3;
+            if (id2 % 3 == 0) parcelas = parcelas + id2 / 3;
+            if (id3 % 3 == 0) parcelas = parcelas + id3 / 3;
+            printf("%d\n", parcelas);
+        }
+    }
+
+    if (dinheiro >= 7) {
+        printf("Ela conseguiu! Rebeka voltou para casa e apanhou da mae por sumir noite passada!\n");
+    } else {
+        printf("E parece que Rebeka vai ter que voltar andando...\n");
+    }
+
+    return 0;
+}
