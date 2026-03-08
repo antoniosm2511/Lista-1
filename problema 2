@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+    int N, A, B;
+    scanf("%d", &N);
+    scanf("%d %d", &A, &B);
+
+    int total = N * (N + 1) / 2;
+
+    int m_A = N / A;
+    int menos_A = A * m_A * (m_A + 1) / 2;
+
+    int m_B = N / B;
+    int menos_B = B * m_B * (m_B + 1) / 2;
+
+    int m_AB = N / (A * B);
+    int mais_AB = (A * B) * m_AB * (m_AB + 1) / 2;
+
+    int resultado = total - menos_A - menos_B + mais_AB;
+
+    printf("%d\n", resultado);
+    
+    if (resultado % 2 == 0) {
+        printf("Lá ele!!!\n");
+    } else {
+        printf("Opa xupenio AULAS...\n");
+    }
+
+    return 0;
+}
