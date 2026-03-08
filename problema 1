@@ -1,0 +1,85 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+    int dia1, mes1, ano1;
+    int dia2, mes2, ano2;
+
+    scanf("%d/%d/%d", &dia1, &mes1, &ano1);
+    scanf("%d/%d/%d", &dia2, &mes2, &ano2);
+
+    // Amor
+    int probabilidade = ((dia1 + mes1 + ano1 + dia2 + mes2 + ano2) * 7) % 101;
+
+    if (probabilidade < 20)
+        printf("Amor: %d%% Pessimo dia para se apaixonar.\n", probabilidade);
+    else if (probabilidade <= 40)
+        printf("Amor: %d%% Melhor manter o coracao <3 longe de perigo.\n", probabilidade);
+    else if (probabilidade <= 69)
+        printf("Amor: %d%% Se o papo e as ideias baterem, esta liberado pensar em algo.\n", probabilidade);
+    else if (probabilidade <= 80)
+        printf("Amor: %d%% Saia com o coracao aberto, mas lembre, nem toda troca de olhar em onibus e sinal de romance.\n", probabilidade);
+    else
+        printf("Amor: %d%% Um dia deslumbrantemente lindo para amar. Ps: Cuidado com a intensidade.\n", probabilidade);
+
+    // Sorte
+    int diferencapos = ano2 - ano1;
+    int probabilidade2 = (((dia1 + mes1 + dia2 + mes2) * 9) + diferencapos) % 101;
+
+    if (probabilidade2 < 30)
+        printf("Sorte: %d%% Nem jogue moedas pra cima hoje. Sem tigrinho nem jogos de azar, por favor!\n", probabilidade2);
+    else if (probabilidade2 <= 50)
+        printf("Sorte: %d%% Melhor nao arriscar. Sem tigrinho nem jogos de azar, por favor!\n", probabilidade2);
+    else if (probabilidade2 <= 79)
+        printf("Sorte: %d%% Por sua conta em risco. Sem tigrinho nem jogos de azar, por favor!\n", probabilidade2);
+    else if (probabilidade2 <= 90)
+        printf("Sorte: %d%% Hoje vale a pena arriscar. Sem tigrinho nem jogos de azar, por favor!\n", probabilidade2);
+    else
+        printf("Sorte: %d%% Nao tenha medo de virar cartas hoje. Sem tigrinho nem jogos de azar, por favor!\n", probabilidade2);
+
+    // Trabalho
+    int somaanos = ano2 + ano1;
+    int probabilidade3 = (somaanos - (dia1 + mes1 + dia2 + mes2) * 8)%101;
+
+    if (probabilidade3 < 40)
+        printf("Trabalho: %d%% Hoje nao sera um dia tao proveitoso, keep calm e faca o basico.\n", probabilidade3);
+    else if (probabilidade3 <= 50)
+        printf("Trabalho: %d%% Segura a emocao, nao xinga ninguem, nao esquece de beber agua.\n", probabilidade3);
+    else if (probabilidade3 <= 69)
+        printf("Trabalho: %d%% Um dia proveitoso com certeza, leve sua simpatia consigo.\n", probabilidade3);
+    else if (probabilidade3 <= 84)
+        printf("Trabalho: %d%% Boas vibracoes hoje, chances podem estar ao seu redor.\n", probabilidade3);
+    else
+        printf("Trabalho: %d%% Use do maximo de networking possível hoje, dia bom para negocios.\n", probabilidade3);
+
+    // Cor
+    int somaquadrados = (dia1*dia1) + (dia2*dia2) + (mes1*mes1) + (mes2*mes2) + (ano1*ano1) + (ano2*ano2);
+    int probabilidade4 = somaquadrados % 11;
+
+    if (probabilidade4 == 0)
+        printf("Cor: Cinza.\n");
+    else if (probabilidade4 == 1)
+        printf("Cor: Vermelho.\n");
+    else if (probabilidade4 == 2)
+        printf("Cor: Laranja.\n");
+    else if (probabilidade4 == 3)
+        printf("Cor: Amarelo.\n");
+    else if (probabilidade4 == 4)
+        printf("Cor: Verde.\n");
+    else if (probabilidade4 == 5)
+        printf("Cor: Azul.\n");
+    else if (probabilidade4 == 6)
+        printf("Cor: Roxo.\n");
+    else if (probabilidade4 == 7)
+        printf("Cor: Marrom.\n");
+    else if (probabilidade4 == 8)
+        printf("Cor: Rosa.\n");
+    else if (probabilidade4 == 9)
+        printf("Cor: Preto.\n");
+    else if (probabilidade4 == 10)
+        printf("Cor: Branco.\n");
+
+    return 0;
+}
